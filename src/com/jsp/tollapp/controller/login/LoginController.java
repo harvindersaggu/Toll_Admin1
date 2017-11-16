@@ -1,4 +1,7 @@
- package com.jsp.tollapp.controller.login;
+package com.jsp.tollapp.controller.login;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,32 +25,46 @@ public class LoginController {
 	private LoginService service;
 
 	public LoginController() {
+
 		logger.info("created.." + this.getClass().getCanonicalName());
 	}
 
 	@RequestMapping(value = "/register.toll", method=RequestMethod.POST)
-	public ModelAndView fetchUserController(LoginDTO loginDTO) {
+	public ModelAndView fetchUserController(LoginDTO loginDTO, HttpServletRequest req) {
 		logger.info("Login controller method started");
 		AdminDTO dtoFromDB = null;
 		ModelAndView modelAndView =  null;
 		try {
 			dtoFromDB = service.fetchUserService(loginDTO);
-		
-		} catch (Exception e) {
-			logger.error("Exception in LoginController fetchUserController");
-		}
+			
+			HttpSession session = req.getSession();
+			session.setAttribute("email", dtoFromDB.getEmail());
+			
+			
 		if (dtoFromDB != null) {
+			if(dtoFromDB.getRoles().equals("superadmin"))
+			{
 			logger.info("Login controller method ended");
 			modelAndView= new ModelAndView("Home.jsp");
 			modelAndView.addObject("msg","Login Sucessful");
 			modelAndView.addObject("user",loginDTO.getUsername());
-			return modelAndView;
-
-		} else {
+			}
+			else if(dtoFromDB.getRoles().equals("admin")){
+				modelAndView= new ModelAndView("Admin.jsp");
+				modelAndView.addObject("msg","Login Sucessful");
+				modelAndView.addObject("user",loginDTO.getUsername());
+			}
+			/*modelAndView.addObject("msg","Login Sucessful");
+			modelAndView.addObject("user",loginDTO.getUsername());
+			return modelAndView;*/
+		else {
 			logger.info("Login controller method ended");
 			return new ModelAndView("Login.jsp", "msg", "Invalid Credentials");
-
+		} }}
+		catch (Exception e) {
+			logger.error("Exception in LoginController fetchUserController");
 		}
-
+		return modelAndView;
+		
 	}
 }

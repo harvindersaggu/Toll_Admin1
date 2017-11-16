@@ -1,4 +1,4 @@
- package com.jsp.tollapp.dto.login;
+package com.jsp.tollapp.dto.login;
 
 import java.io.Serializable;
 

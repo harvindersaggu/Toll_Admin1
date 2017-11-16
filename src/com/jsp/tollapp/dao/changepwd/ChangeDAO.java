@@ -1,5 +1,7 @@
 package com.jsp.tollapp.dao.changepwd;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,6 +34,9 @@ public class ChangeDAO {
 			if (dto.getPassword().equals(dto.getConfirmpassword())) {
 				String hqls = "update AdminDTO C set C.password=:pass where C.email=:ems";
 				Query query = session.createQuery(hqls);
+				
+//				HttpSession sessions =request2.getSession(false);
+//				String email=(String) sessions.getAttribute("email");
 				query.setParameter("ems", dto.getEmail());
 				query.setParameter("pass", dto.getConfirmpassword());
 				query.executeUpdate();

@@ -44,6 +44,10 @@ public class AdminDTO implements Serializable {
 
 	@Column(name = "a_status")
 	private boolean status;
+	
+
+	@Column(name = "roles")
+	private String roles;
 
 	public AdminDTO() {
 		logger.info("created.." + this.getClass().getSimpleName());
@@ -105,10 +109,34 @@ public class AdminDTO implements Serializable {
 		this.status = status;
 	}
 
+	
+	/**
+	 * @return the roles
+	 */
+	public String getRoles() {
+	
+		return roles;
+	}
+
+	
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(String roles) {
+	
+		this.roles = roles;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
+
 		return "AdminDTO [id=" + id + ", username=" + username + ", password=" + password + ", expiryDate=" + expiryDate
-				+ ", email=" + email + ", choosetoll=" + choosetoll + ", status=" + status + "]";
+				+ ", email=" + email + ", choosetoll=" + choosetoll + ", status=" + status + ", roles=" + roles + "]";
 	}
+
+	
 
 }

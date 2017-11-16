@@ -1,5 +1,8 @@
 package com.jsp.tollapp.controller.changepwd;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,7 @@ public class ChangeController {
 	}
 
 	@RequestMapping(value = "/changepwd.toll", method = RequestMethod.POST)
-	public ModelAndView changePassController(ChangeDTO dto) {
+	public ModelAndView changePassController(ChangeDTO dto, HttpServletRequest request) {
 		logger.info("ActivationController activate() method started");
 
 		String message = null;

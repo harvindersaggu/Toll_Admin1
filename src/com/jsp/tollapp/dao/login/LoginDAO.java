@@ -1,6 +1,5 @@
-package com.jsp.tollapp.dao.login;
+ package com.jsp.tollapp.dao.login;
 
-import org.apache.commons.codec.binary.Base64;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -22,12 +21,10 @@ public class LoginDAO {
 	private SessionFactory factory;
 
 	public LoginDAO() {
-
 		logger.info("created.." + this.getClass().getCanonicalName());
 	}
 
 	public AdminDTO fetchUserDAO(LoginDTO dto) {
-
 		logger.info("LoginDAO method started");
 		AdminDTO dtoFromDB = null;
 		try {
@@ -37,8 +34,8 @@ public class LoginDAO {
 			query.setParameter("un", dto.getUsername());
 			query.setParameter("pw", dto.getPassword());
 			dtoFromDB = (AdminDTO) query.uniqueResult();
-		}
-		catch (HibernateException e) {
+
+		} catch (HibernateException e) {
 			logger.error("Exception in LoginDAO fetchUserDAO method");
 			e.printStackTrace();
 		}
