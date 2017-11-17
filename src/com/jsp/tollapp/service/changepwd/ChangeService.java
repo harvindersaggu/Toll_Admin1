@@ -1,14 +1,12 @@
 package com.jsp.tollapp.service.changepwd;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Base64;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jsp.tollapp.dao.changepwd.ChangeDAO;
+import com.jsp.tollapp.dto.admin.AdminDTO;
 import com.jsp.tollapp.dto.changepwd.ChangeDTO;
 
 @Service
@@ -23,20 +21,10 @@ public class ChangeService {
 	}
 
 	public String changePassService(ChangeDTO dto) {
-		String datas = dto.getPassword();
-		String conpwd =dto.getConfirmpassword();
-		String data = null;
-		
-		String confirm =null;
 		boolean res = false;
 		try {
-			data = Base64.getEncoder().encodeToString(datas.getBytes("UTF-8"));
-			dto.setPassword(data);
-			
-			confirm = Base64.getEncoder().encodeToString(conpwd.getBytes("UTF-8"));
-			dto.setConfirmpassword(confirm);
 			res = dao.changePass(dto);
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			logger.error("Exception in ChangeService changePassService method");
 			e.printStackTrace();
 		}

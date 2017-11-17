@@ -50,7 +50,7 @@ h1 {
 		<input type="submit" value="Submit">
 	</form>
 	<hr>
-	<h5>Toll Managemeny System</h5>
+	<h5>Toll Management System</h5>
 	</div>
 </body>
 </html> 

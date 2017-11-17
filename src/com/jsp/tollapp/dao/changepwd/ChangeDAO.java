@@ -1,5 +1,6 @@
 package com.jsp.tollapp.dao.changepwd;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.Query;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jsp.tollapp.dto.admin.AdminDTO;
 import com.jsp.tollapp.dto.changepwd.ChangeDTO;
 
 @Repository
@@ -34,9 +36,7 @@ public class ChangeDAO {
 			if (dto.getPassword().equals(dto.getConfirmpassword())) {
 				String hqls = "update AdminDTO C set C.password=:pass where C.email=:ems";
 				Query query = session.createQuery(hqls);
-				
-//				HttpSession sessions =request2.getSession(false);
-//				String email=(String) sessions.getAttribute("email");
+//				System.out.println("----------------------------------"+email);
 				query.setParameter("ems", dto.getEmail());
 				query.setParameter("pass", dto.getConfirmpassword());
 				query.executeUpdate();

@@ -11,20 +11,20 @@ div {
 	margin: auto;
 	width: 60%;
 	border: 3px solid grey;
-	border-top-left-radius:10px;
-	border-top-right-radius:10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 	padding: 10px;
 }
 
 .footer {
 	width: 60%;
 	border: 3px solid grey;
-	border-bottom-left-radius:10px;
-	border-bottom-right-radius:10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 	padding: 10px;
 }
 
- input[type=password],input[type=email] {
+input[type=password], input[type=email] {
 	padding: 12px 20px;
 	margin: 8px 0;
 	border: 2px solid grey;
@@ -36,7 +36,7 @@ div {
 
 input[type=submit], input[type=reset] {
 	padding: 12px 20px;
-	margin-left:26px;
+	margin-left: 26px;
 	margin: 10px 0;
 	border: 2px solid grey;
 	border-radius: 4px;
@@ -48,24 +48,28 @@ input[type=submit], input[type=reset] {
 h1 {
 	text-align: center;
 }
+
+h4 {
+	margin-left: 20%;
+}
 </style>
 </head>
 <body>
 
-${msg}
 
 	<div align="center">
 	<h1>Change your password</h1>
 	<hr>
 	<form action="changepwd.toll" method="post">
-		Enter ur Email     :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <input type="email" name="email"><br>
 		<br>
 		Enter new password :&nbsp;&nbsp; <input type="password" name="password"><br>
 		<br>
-		Confirm new Password : <input type="password" name="confirmpassword"><br><br>
+		Confirm new Password : <input type="password" name="confirmpassword"><br>
+		
+		<h4>${msg}</h4>
 		<input type="submit" value="Change Password">
 	</form>
 	<hr>
-	<h3>Toll Managemeny System</h3>
+	<h3>Toll Management System</h3>
 </body>
 </html>

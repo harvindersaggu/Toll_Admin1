@@ -29,42 +29,44 @@ public class LoginController {
 		logger.info("created.." + this.getClass().getCanonicalName());
 	}
 
-	@RequestMapping(value = "/register.toll", method=RequestMethod.POST)
+	@RequestMapping(value = "/register.toll", method = RequestMethod.POST)
 	public ModelAndView fetchUserController(LoginDTO loginDTO, HttpServletRequest req) {
+
 		logger.info("Login controller method started");
 		AdminDTO dtoFromDB = null;
-		ModelAndView modelAndView =  null;
+		ModelAndView modelAndView = null;
 		try {
 			dtoFromDB = service.fetchUserService(loginDTO);
-			
 			HttpSession session = req.getSession();
+			logger.info("dtoFromDB.getEmail()------------------------------------------"+dtoFromDB.getEmail());
 			session.setAttribute("email", dtoFromDB.getEmail());
 			
-			
-		if (dtoFromDB != null) {
-			if(dtoFromDB.getRoles().equals("superadmin"))
-			{
-			logger.info("Login controller method ended");
-			modelAndView= new ModelAndView("Home.jsp");
-			modelAndView.addObject("msg","Login Sucessful");
-			modelAndView.addObject("user",loginDTO.getUsername());
+			if (dtoFromDB != null) {
+				if (dtoFromDB.getRoles().equals("superadmin")) {
+					logger.info("Login controller method ended");
+					modelAndView = new ModelAndView("Home.jsp");
+					modelAndView.addObject("msg", "Login Sucessful");
+					modelAndView.addObject("user", loginDTO.getUsername());
+				}
+				else if (dtoFromDB.getRoles().equals("admin")) {
+					modelAndView = new ModelAndView("Admin.jsp");
+					modelAndView.addObject("msg", "Login Sucessful");
+					modelAndView.addObject("user", loginDTO.getUsername());
+				}
+				/*
+				 * modelAndView.addObject("msg","Login Sucessful");
+				 * modelAndView.addObject("user",loginDTO.getUsername());
+				 * return modelAndView;
+				 */
+				else {
+					logger.info("Login controller method ended");
+					return new ModelAndView("Login.jsp", "msg", "Invalid Credentials");
+				}
 			}
-			else if(dtoFromDB.getRoles().equals("admin")){
-				modelAndView= new ModelAndView("Admin.jsp");
-				modelAndView.addObject("msg","Login Sucessful");
-				modelAndView.addObject("user",loginDTO.getUsername());
-			}
-			/*modelAndView.addObject("msg","Login Sucessful");
-			modelAndView.addObject("user",loginDTO.getUsername());
-			return modelAndView;*/
-		else {
-			logger.info("Login controller method ended");
-			return new ModelAndView("Login.jsp", "msg", "Invalid Credentials");
-		} }}
+		}
 		catch (Exception e) {
 			logger.error("Exception in LoginController fetchUserController");
 		}
 		return modelAndView;
-		
 	}
 }

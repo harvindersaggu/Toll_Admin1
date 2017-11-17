@@ -53,7 +53,6 @@ text-align: right;
 	<h4><a href="Changepwd.jsp">Change password</a> | ${user}<br>
 <a href="logout.toll">Logout</a></h4>
 <hr>
-	<hr>
 		<form action="addAdmin.toll" method="post">
 		${msg} 
 			<br> Name:<input type="text" name="username"><br>
@@ -71,7 +70,7 @@ text-align: right;
 			<br>
 		</form>
 		<hr>
-	<h5> Toll Managemeny System</h5>
+	<h5> Toll Management System</h5>
 	</div>
 </body>
 </html> 

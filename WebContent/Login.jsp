@@ -71,7 +71,7 @@ h1 {
 		<a href="Forgot.jsp"> Forgot Password?</a>
 	</form>
 	<hr>
-	<h3>Toll Managemeny System</h3>
+	<h3>Toll Management System</h3>
 	</div>
 	
 </body>
