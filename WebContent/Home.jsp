@@ -38,8 +38,8 @@ h3 {
 
 		<h3>${msg}</h3>
 		<h3>
-			<a href="Addadmin.jsp">Add Admin</a><br> <a href="Update.jsp">Update
-				Details</a><br> <a href="Search.jsp">Search</a>
+			<a href="Addadmin.jsp">Add Admin</a><br> 
+			<a href="Update.jsp">Update	Details</a><br> <a href="Search.jsp">Search</a>
 		</h3>
 		<hr>
 		<h5>Toll Management System</h5>

@@ -26,7 +26,7 @@ public class LoginController {
 
 	public LoginController() {
 
-		logger.info("created.." + this.getClass().getCanonicalName());
+		logger.info("created.." + this.getClass().getSimpleName());
 	}
 
 	@RequestMapping(value = "/register.toll", method = RequestMethod.POST)
@@ -38,6 +38,7 @@ public class LoginController {
 		try {
 			dtoFromDB = service.fetchUserService(loginDTO);
 			HttpSession session = req.getSession();
+			session.setAttribute("adto", dtoFromDB);
 			logger.info("dtoFromDB.getEmail()------------------------------------------"+dtoFromDB.getEmail());
 			session.setAttribute("email", dtoFromDB.getEmail());
 			
@@ -66,6 +67,7 @@ public class LoginController {
 		}
 		catch (Exception e) {
 			logger.error("Exception in LoginController fetchUserController");
+			e.printStackTrace();
 		}
 		return modelAndView;
 	}
