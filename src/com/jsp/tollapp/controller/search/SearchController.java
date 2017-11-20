@@ -3,7 +3,6 @@ package com.jsp.tollapp.controller.search;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,26 +23,28 @@ public class SearchController {
 
 	@Autowired
 	private SearchService service;
-	
+
 	public SearchController() {
+
 		logger.info("created.." + this.getClass().getSimpleName());
 	}
-	@RequestMapping(value="/search.toll", method=RequestMethod.POST)
-	public ModelAndView searchAdminController(HttpServletRequest request)
-	{
+
+	@RequestMapping(value = "/search.toll", method = RequestMethod.POST)
+	public ModelAndView searchAdminController(HttpServletRequest request) {
+
 		logger.info("SearchController searchAdminController() method started");
+		List<AdminDTO> list = null;
 		try {
-			String username= request.getParameter("username");
-			String password= request.getParameter("password");
-			String tollName=request.getParameter("choosetoll");
-			List<AdminDTO> dtoFromDB=service.searchService(username,password,tollName);
-			logger.info("dtoFromDB"+dtoFromDB);
-	
-		} catch (Exception e) {
+			String username = request.getParameter("username");
+			String email = request.getParameter("email");
+			String tollName = request.getParameter("choosetoll");
+			list = service.searchService(username, email, tollName);
+			logger.info("dtoFromDB" + list);
+		}
+		catch (Exception e) {
 			logger.error("Exception in SearchController searchAdminController() method");
 		}
 		logger.info("SearchController searchAdminController() method ended");
-		return new ModelAndView("Result.jsp","msg","Search Result");
-		
+		return new ModelAndView("Result.jsp", "list", list);
 	}
 }

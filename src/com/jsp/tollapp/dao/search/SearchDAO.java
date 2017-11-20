@@ -36,11 +36,12 @@ public class SearchDAO {
 		query.setParameter("em", email);
 		query.setParameter("ct", tollName);
 		List<AdminDTO> list=query.list();
+		logger.info("list"+list);
 		return list;
 		}catch (HibernateException e) {
 			logger.error("Exception in SearchDAO searchAdmin() method");
 			e.printStackTrace();
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 }

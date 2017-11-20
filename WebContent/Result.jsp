@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,7 +47,7 @@ h1 {
 	text-align: center;
 }
 h4,h6,h7{
-text-align: right;
+	text-align: right;
 }
 </style>
 </head>
@@ -57,7 +58,7 @@ text-align: right;
 <a href="logout.toll">Logout</a></h4>
 <hr>
 	${msg} 
-		<table border="1" align="center" cellpadding="5" cellspacing="0">
+		<table border="1" align="center"  cellspacing="0">
 		<tr>
 		<th>S.No</th>
 		<th>Name</th>
@@ -67,14 +68,14 @@ text-align: right;
 		<th>Expiry Date</th>
 		</tr>
 		
-		<c:forEach items="list" items="${list}">
+		<c:forEach var="list" items="${list}">
 		<tr>
-		<td><c:out value="${list.id}"></c:out></td>
-		<td><c:out value="${list.username}"></c:out></td>
-		<td><c:out value="${list.email}"></c:out></td>
-		<td><c:out value="${list.choosetoll}"></c:out></td>
-		<td><c:out value="${list.status}"></c:out></td>
-		<td><c:out value="${list.expiryDate}"></c:out></td>
+		<td><c:out value="${list.id}"/></td>
+		<td><c:out value="${list.username}"/></td>
+		<td><c:out value="${list.email}"/></td>
+		<td><c:out value="${list.choosetoll}"/></td>
+		<td><c:out value="${list.status}"/></td>
+		<td><c:out value="${list.expiryDate}"/></td>
 		</tr></c:forEach>
 		</table>
 		<hr>
