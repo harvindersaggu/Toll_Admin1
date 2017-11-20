@@ -34,21 +34,19 @@ public class ChangeController {
 
 		logger.info("ActivationController activate() method started");
 		String message = null;
-		HttpSession session = req.getSession();
-		String dtoFromSession = (String) session.getAttribute("email");
-		dto.setEmail(dtoFromSession);
+		HttpSession session = req.getSession(false);
+		AdminDTO dtoFromSession = (AdminDTO) session.getAttribute("adto");
+		String email = dtoFromSession.getEmail();
 		try {
-			message = service.changePassService(dto);
-		}
-		catch (Exception e) {
+			message = service.changePassService(dto,email);
+		} catch (Exception e) {
 			logger.error("Exception in ActivationController activate method");
 			e.printStackTrace();
 		}
 		logger.info("ActivationController activate() method ended");
 		if (message.equals("Password Changed Successfully")) {
 			return new ModelAndView("Login.jsp", "msg", message);
-		}
-		else {
+		} else {
 			return new ModelAndView("Changepwd.jsp", "msg", message);
 		}
 	}

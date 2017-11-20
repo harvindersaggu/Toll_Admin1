@@ -20,10 +20,10 @@ public class ChangeService {
 		logger.info("created.." + this.getClass().getSimpleName());
 	}
 
-	public String changePassService(ChangeDTO dto) {
+	public String changePassService(ChangeDTO dto, String email) {
 		boolean res = false;
 		try {
-			res = dao.changePass(dto);
+			res = dao.changePass(dto,email);
 		} catch (Exception e) {
 			logger.error("Exception in ChangeService changePassService method");
 			e.printStackTrace();

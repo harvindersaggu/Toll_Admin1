@@ -32,6 +32,5 @@ public class LoginService {
 		}
 		logger.info("LoginService method ended");
 		return dtoFromDB;
-
 	}
 }

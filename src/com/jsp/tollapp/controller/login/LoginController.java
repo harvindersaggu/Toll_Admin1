@@ -39,9 +39,6 @@ public class LoginController {
 			dtoFromDB = service.fetchUserService(loginDTO);
 			HttpSession session = req.getSession();
 			session.setAttribute("adto", dtoFromDB);
-			logger.info("dtoFromDB.getEmail()------------------------------------------"+dtoFromDB.getEmail());
-			session.setAttribute("email", dtoFromDB.getEmail());
-			
 			if (dtoFromDB != null) {
 				if (dtoFromDB.getRoles().equals("superadmin")) {
 					logger.info("Login controller method ended");

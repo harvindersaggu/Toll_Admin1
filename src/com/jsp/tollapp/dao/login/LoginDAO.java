@@ -21,7 +21,7 @@ public class LoginDAO {
 	private SessionFactory factory;
 
 	public LoginDAO() {
-		logger.info("created.." + this.getClass().getCanonicalName());
+		logger.info("created.." + this.getClass().getSimpleName());
 	}
 
 	public AdminDTO fetchUserDAO(LoginDTO dto) {

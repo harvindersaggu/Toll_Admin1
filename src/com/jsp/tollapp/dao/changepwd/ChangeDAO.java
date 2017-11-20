@@ -23,7 +23,7 @@ public class ChangeDAO {
 	@Autowired
 	private SessionFactory factory;
 
-	public boolean changePass(ChangeDTO dto) {
+	public boolean changePass(ChangeDTO dto, String email) {
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		try {
@@ -37,7 +37,7 @@ public class ChangeDAO {
 				String hqls = "update AdminDTO C set C.password=:pass where C.email=:ems";
 				Query query = session.createQuery(hqls);
 //				System.out.println("----------------------------------"+email);
-				query.setParameter("ems", dto.getEmail());
+				query.setParameter("ems", email);
 				query.setParameter("pass", dto.getConfirmpassword());
 				query.executeUpdate();
 				transaction.commit();

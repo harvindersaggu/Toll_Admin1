@@ -54,12 +54,12 @@ public class AdminController {
 		logger.info("AdminController saveAdminController ended");
 		return new ModelAndView("Home.jsp", "msg", message);
 	}
-	@RequestMapping(value = "/logout.toll")
-    public String logout(HttpServletRequest request) {
-        System.out.println("logout()");
-        HttpSession httpSession = request.getSession();
-        httpSession.invalidate();
 
-        return "/Login.jsp";
-    }
-    }
+	@RequestMapping(value = "/logout.toll")
+	public String logout(HttpServletRequest request) {
+		System.out.println("logout()");
+		HttpSession httpSession = request.getSession();
+		httpSession.invalidate();
+		return "/Login.jsp";
+	}
+}

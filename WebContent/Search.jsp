@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
 <style>
 div {
 	background-color: #e6f2ef;
@@ -20,7 +19,8 @@ select {
     border: 2px solid grey;
     border-radius: 4px;
     background-color: #f1f1f1;
-    width: 15%;
+    width: 22%;
+    height: 5%
 }
 input[type=text],input[type=email] {
     padding: 12px 20px;
@@ -31,13 +31,13 @@ input[type=text],input[type=email] {
     width: 40%;
     height: 3%;
 }
-input[type=submit],input[type=reset] {
+input[type=submit] {
     padding: 12px 20px;
     margin: 8px 0;
     border: 2px solid grey;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 10%;
+    width: 20%;
     height: 3%;
 }
 h1 {
@@ -51,25 +51,17 @@ text-align: right;
 <body>
 	
 	<div align="center">
-	<h1>Update Details</h1>
+	<h1>Search Admin</h1>
 	<h4><a href="Changepwd.jsp">Change password</a> | ${user}<br>
 <a href="logout.toll">Logout</a></h4>
 <hr>
-		<form action="update.toll" method="post">
+		<form action="search.toll" method="post">
 		${msg} 
-			<br> Name:<input type="text" name="username" value="${adto.username}"><br>
-			<br> Email:<input type="email" name="email" value="${adto.email}"><br>
-			<br> Choose Toll:<select name="choosetoll" >
-			<option value="MGroad">${adto.choosetoll}</option>
-				<option value="MGroad">MGroad</option>
-				<option value="Rajajinagar">Rajajinagar</option>
-				<option value="Yehalanka">Yehalanka</option>
-				<option value="Hebbal">Hebbal</option>
-			</select><br>
-			<br> Expiry Date:<input type="text" name="expiryDate" readonly="readonly" value="${adto.expiryDate}"><br>
-			<br> Status:<input type="radio" name="status" value="1">Active
-			<input type="radio" name="status" value="0" checked="checked">Inactive<br>
-			<input type="submit" value="Update">
+			<br> Name:<input type="text" name="username"><br>
+			<font style="text-align: center">OR</font>
+			<br> Email:<input type="text" name="email"><br>
+			<br> Toll Name:<input type="text" name="choosetoll"><br>
+			<input type="submit" value="Search"><br>
 			<br>
 		</form>
 		<hr>
@@ -77,3 +69,6 @@ text-align: right;
 	</div>
 </body>
 </html> 
+
+</body>
+</html>
